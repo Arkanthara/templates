@@ -13,10 +13,32 @@
 \usepackage{fancyhdr}    % headers/footers
 \usepackage{lastpage}    % total pages reference
 \usepackage{array}       % layout tables
+% \usepackage{fancyvrb}    % fancy verbatim, needed for Shaded
+% \usepackage{framed}      % provides shaded environment
+% \usepackage{xcolor}
+% \definecolor{shadecolor}{RGB}{240,240,240} % light gray background
 
 \geometry{margin=1in}
 \setstretch{1.2}
 
+% ------------------------------
+% VARIABLES
+% ------------------------------
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+% Download default logo if YAML logo not provided
+$if(logo)$
+  % YAML logo exists — do nothing
+$else$
+  % Ensure images/ folder exists
+  \immediate\write18{mkdir images 2>nul || true}
+  \immediate\write18{curl -L https://github.com/Arkanthara/templates/raw/refs/heads/master/images/unige.pdf -o images/unige.pdf}
+  \def\defaultlogo{images/unige.pdf}
+$endif$
+% Ensure images/ folder exists
+\immediate\write18{mkdir images 2>nul || true}
 % ------------------------------
 % Pandoc FIX
 % ------------------------------
@@ -54,6 +76,8 @@
   $else$
     $if(logo)$%
       \raisebox{-0.2\height}{\includegraphics[height=1cm]{$logo$}} \enspace
+    $else$
+      \raisebox{-0.2\height}{\includegraphics[height=1cm]{\defaultlogo}} \enspace
     $endif$%
     \small $if(university)$$university$$endif$%
     $if(department)$, $department$$endif$
@@ -73,11 +97,11 @@
 
     % --- University logo and name ---
     $if(university)$
-      \includegraphics[width=$if(logosize)$$logosize$$else$0.35\linewidth$endif$]{$if(logo)$$logo$$else$../images/unige.pdf$endif$}\\[0.8cm]
+      \includegraphics[width=$if(logosize)$$logosize$$else$0.35\linewidth$endif$]{$if(logo)$$logo$$else$\defaultlogo$endif$}\\[0.8cm]
       {\Large\textsc{$university$}}\\
       $if(department)${\large $department$}\\[1.2cm]$endif$
     $else$
-      \includegraphics[width=$if(logosize)$$logosize$$else$0.55\linewidth$endif$]{$if(logo)$$logo$$else$../images/unige.pdf$endif$}\\[2cm]
+      \includegraphics[width=$if(logosize)$$logosize$$else$0.55\linewidth$endif$]{$if(logo)$$logo$$else$\defaultlogo$endif$}\\[2cm]
     $endif$
 
     % --- Title of the work ---
