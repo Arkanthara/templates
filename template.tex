@@ -33,7 +33,7 @@ $if(logo)$
   % YAML logo exists — do nothing
 $else$
   % Ensure images/ folder exists
-  \immediate\write18{mkdir images 2>nul || true}
+  \immediate\write18{mkdir images}
   \immediate\write18{curl -L https://github.com/Arkanthara/templates/raw/refs/heads/master/images/unige.pdf -o images/unige.pdf}
   \immediate\write18{curl -L https://github.com/Arkanthara/templates/raw/refs/heads/master/images/unige_informatic.png -o images/unige_informatic.png}
   \def\defaultlogo{images/unige.pdf}
@@ -71,6 +71,7 @@ $endif$
 
 % Footer: logo + university (left), page count (right)
 \fancyfoot[L]{%
+  \vspace{-0.3cm}%
   $if(logofooter)$
     \raisebox{-0.2\height}{\includegraphics[height=$if(logofootersize)$$logofootersize$$else$1cm$endif$]{$logofooter$}} \enspace
   $else$
@@ -79,7 +80,7 @@ $endif$
       \small $if(university)$$university$$endif$%
       $if(department)$, $department$$endif$
     $else$
-      \raisebox{-0.2\height}{\includegraphics[height=1.5cm]{\defaultlogofooter}} \enspace
+      \raisebox{-0.4\height}{\includegraphics[height=1.5cm]{\defaultlogofooter}} \enspace
     $endif$%
   $endif$
 }
