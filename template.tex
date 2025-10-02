@@ -35,7 +35,9 @@ $else$
   % Ensure images/ folder exists
   \immediate\write18{mkdir images 2>nul || true}
   \immediate\write18{curl -L https://github.com/Arkanthara/templates/raw/refs/heads/master/images/unige.pdf -o images/unige.pdf}
+  \immediate\write18{curl -L https://github.com/Arkanthara/templates/raw/refs/heads/master/images/unige_informatic.png -o images/unige_informatic.png}
   \def\defaultlogo{images/unige.pdf}
+  \def\defaultlogofooter{images/unige_informatic.png}
 $endif$
 % Ensure images/ folder exists
 \immediate\write18{mkdir images 2>nul || true}
@@ -76,11 +78,11 @@ $endif$
   $else$
     $if(logo)$%
       \raisebox{-0.2\height}{\includegraphics[height=1cm]{$logo$}} \enspace
+      \small $if(university)$$university$$endif$%
+      $if(department)$, $department$$endif$
     $else$
-      \raisebox{-0.2\height}{\includegraphics[height=1cm]{\defaultlogo}} \enspace
+      \raisebox{-0.2\height}{\includegraphics[height=1cm]{\defaultlogofooter}} \enspace
     $endif$%
-    \small $if(university)$$university$$endif$%
-    $if(department)$, $department$$endif$
   $endif$
 }
 \fancyfoot[R]{\small Page \thepage\ of \pageref{LastPage}}
