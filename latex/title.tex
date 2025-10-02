@@ -1,0 +1,51 @@
+\begin{titlepage}
+    \centering
+
+    % --- University logo and name ---
+    \printifdefined{logo}{\includegraphics[width=\logosize]{\logo}\\[0.8cm]}
+    \printifdefined{university}{{\Large\textsc{\university}}\\}
+    \printifdefined{department}{{\large \department}\\[1.2cm]}
+
+    % --- Title ---
+    \printifdefined{titletext}{{\Huge\scshape \titletext\par}}
+
+    % --- Subtitle ---
+    \printifdefined{subtitle}{\vspace{0.6cm}{\Large \subtitle\par}}
+
+    % --- Course ID ---
+    \printifdefined{courseid}{\vspace{0.3cm}{\large \courseid\par}}
+
+    \vspace{1.2cm}
+
+    % --- Illustration (optional) ---
+    \printifdefined{illustration}{\includegraphics[width=0.7\linewidth]{\illustration}\\[1.2cm]}
+
+    % --- Authors ---
+    \printifdefined{authorA}{{\Large \authorA\par}}
+    \printifdefined{authorB}{{\Large \authorB\par}}
+
+    % --- Emails ---
+    \printifdefined{emailA}{\vspace{0.3cm}\href{mailto:\emailA}{\texttt{\emailA}}\par}
+    \printifdefined{emailB}{\href{mailto:\emailB}{\texttt{\emailB}}\par}
+
+    % --- Supervisor ---
+    \printifdefined{supervisor}{\vspace{0.5cm}{\small Supervisor: \textit{\supervisor}\par}}
+
+    % --- Repository link ---
+    \printifdefined{repositoryurl}{\vspace{0.5cm}{\small Repository: \href{\repositoryurl}{\repositoryname}\par}}
+
+    \vfill
+
+    % --- Date ---
+    \printifdefined{documentdate}{{\large \documentdate\par}}
+\end{titlepage}
+
+% --- Table of Contents (optional) ---
+\printifdefined{toc}{
+  \clearpage
+  \pagestyle{plain}
+  \addtocontents{toc}{\protect\centerline{Table of Contents}}
+  \tableofcontents
+  \clearpage
+  \pagestyle{fancy}
+}
