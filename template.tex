@@ -39,8 +39,6 @@ $else$
   \def\defaultlogo{images/unige.pdf}
   \def\defaultlogofooter{images/unige_informatic.png}
 $endif$
-% Ensure images/ folder exists
-\immediate\write18{mkdir images 2>nul || true}
 % ------------------------------
 % Pandoc FIX
 % ------------------------------
@@ -81,7 +79,7 @@ $endif$
       \small $if(university)$$university$$endif$%
       $if(department)$, $department$$endif$
     $else$
-      \raisebox{-0.2\height}{\includegraphics[height=1cm]{\defaultlogofooter}} \enspace
+      \raisebox{-0.2\height}{\includegraphics[height=1.5cm]{\defaultlogofooter}} \enspace
     $endif$%
   $endif$
 }

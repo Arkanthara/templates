@@ -14,6 +14,8 @@ department: "Dummy Ducks"
 toc: true
 format:
   pdf:
+    pdf-engine: xelatex
+    pdf-engine-opts: ["--shell-escape"]
     template: template.tex
     execute: true # Code execution
     echo: true    # Code printing in document
