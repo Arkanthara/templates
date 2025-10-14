@@ -6,10 +6,10 @@ author: "Fitzwilliam Darcy"
 email: "Fitzwilliam.Darcy@blabla.ch"
 repository: "https://github.com/yourname/your_repository"
 repositoryName: "Repository Name"
-university: "University of Silly Sockets"
-department: "Dummy Ducks"
-# logo: ""
-# logofooter: "./images/unige_csd.png"
+university: "University of Geneva"
+department: "Department of Informatics"
+# logo: "./images/unige.pdf"
+# logofooter: "./images/unige_informatic.png"
 # logofootersize: 1.5cm
 toc: true
 format:
@@ -27,6 +27,8 @@ format:
 
 Your introduction
 
+\newpage
+
 # Methodology {#sec-met}
 
 Your section [-@sec-met]
@@ -40,6 +42,8 @@ $$
 \text{MSE} = \frac{1}{mn}\sum_{i = 1}^m \sum_{j = 1}^n \left[I(i, j) - K(i, j)\right]^2
 $$ {#eq-mse}
 
+\newpage
+
 # Implementation
 
 Blabla
@@ -51,13 +55,19 @@ print("Hello")
 echo "Coucou"
 ```
 
+\newpage
+
 # Results
 
 Blablablablabla
 
+\newpage
+
 # Discussion
 
 Blablablablblablblablalblablal
+
+\newpage
 
 # Conclusion
 
