@@ -32,46 +32,34 @@
   subtitle : [_Typst Template Example_],
   url      : "https://synd.hevs.io",
   logos: (
-    tp_topleft  : image("resources/img/synd.svg", height: 1.2cm),
-    tp_topright : image("resources/img/hei.svg", height: 1.5cm),
-    tp_main     : titlepage_logo,
-    header      : image("resources/img/project-logo.svg", width: 2.5cm),
+    tp_topleft  : image("resources/img/unige.pdf", height: 1.2cm),
+    tp_topright : image("resources/img/unige_informatic.png", height: 1.5cm),
+    // tp_main     : image("resources/img/unige.pdf", height: 5cm),
+    header      : image("resources/img/unige.pdf", width: 2cm),
   ),
   authors: (
     (
-      name        : "Silvan Zahno",
-      abbr        : "ZaS",
-      email       : "silvan.zahno@hevs.ch",
-      url         : "https://synd.hevs.io",
-    ),
-    (
-      name        : "Axel Amand",
-      abbr        : "AmA",
-      email       : "axel.amand@hevs.ch",
-      url         : "https://synd.hevs.io",
-    ),
-    (
-      name        : "Rémi Heredero",
-      abbr        : "HeR",
-      email       : "remi.heredero@hevs.ch",
-      url         : "https://synd.hevs.io",
+      name        : "Michel Jean Joseph Donnet",
+      abbr        : "MJJD",
+      email       : "",
+      // url         : "https://synd.hevs.io",
     ),
   ),
   school: (
-    name        : "HES-SO Valais//Wallis",
-    major       : "Systems Engineering",
-    orientation : "Infotronics",
-    url         : "https://synd.hevs.io",
+    name        : "University of Geneva",
+    major       : "Faculty of Sciences",
+    orientation : "Informatics Department",
+    // url         : "https://synd.hevs.io",
   ),
   course: (
-    name     : "Digital Design",
-    url      : "https://course.hevs.io/did/eda-docs/",
+    name     : "Digital Forensic",
+    // url      : "https://course.hevs.io/did/eda-docs/",
     prof     : "Silvan Zahno",
-    class    : [S1f$alpha$],
+    // class    : [S1f$alpha$],
     semester : "Fall Semester 2025",
   ),
-  keywords : ("Typst", "Template", "Report", "HEI-Vs", "Systems Engineering", "Infotronics"),
-  version  : "v0.1.0",
+  // keywords : ("Typst", "Template", "Report", "HEI-Vs", "Systems Engineering", "Infotronics"),
+  // version  : "v0.1.0",
 )
 
 #let date= datetime.today()
@@ -91,7 +79,7 @@
 #let gloss    = true
 #let appendix = false
 #let bib = (
-  display : true,
+  display : false,
   path  : "/tail/bibliography.bib",
   style : "ieee", //"apa", "chicago-author-date", "chicago-notes", "mla"
 )
