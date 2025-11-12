@@ -1,5 +1,5 @@
 // Main report file
-#import "template.typ": create-report-template, make-report
+#import "template.typ": create-report-template, make-report, report-footnote
 
 // Configure your report
 #let my-report = create-report-template(
@@ -51,6 +51,7 @@
 = Introduction
 
 This is the introduction of your report.
+#report-footnote[Ghnzajaja]
 
 = Methodology
 

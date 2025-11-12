@@ -156,6 +156,31 @@
   
   pagebreak()
 }
+// Create state for footnotes
+#let report-notes = state("report-notes", ())
+
+// Function to create a footnote
+#let report-footnote(text) = {
+  // Add footnote to state
+  report-notes.update(notes => (..notes, text))
+  // Return superscript number
+  context super(str(report-notes.get().len()))
+}
+
+// Function to show footnotes in footer
+#let show-report-footnotes() = {
+  let notes = report-notes.get()
+  if notes.len() > 0 [
+    #v(0.2em)
+    #set text(size: 8pt)
+    #context for (i, note) in notes.enumerate() {
+      [#super(str(i + 1)) #note]
+      if i < notes.len() - 1 [ #h(1em) ]
+    }
+    // Reset notes for next page
+    #report-notes.update(())
+  ]
+}
 
 // Main document function
 #let make-report(template, body) = {
@@ -170,10 +195,13 @@
     date: if template.date != none { template.date } else { datetime.today() }
   )
   
-  // Set page margins
+  // Customize footnote appearance BEFORE setting page layout
+  // set footnote.entry(indent: 0em, gap: 0em, clearance: 0em, separator: [#line(start: (-0.5em, 0cm), length: 100%, stroke: 0.5pt)])
+  
+  // Set page margins with extra bottom space for footnotes
   set page(margin: (top:3cm, bottom:3cm, left:3cm, right:2.5cm))
   
-  // Set headers and footers - following the working example structure
+  // Set headers and footers
   set page(
     header: context(
       if here().page() >= 2 [
@@ -185,9 +213,9 @@
           align: (x, y) => (left+bottom, right+top).at(x),
           [
             #if template.project-name != none {
-              [#smallcaps[#template.project-name]]
+              [#smallcaps[template.project-name]]
             } #if template.project-name != none and template.title != none {[/]} #if template.title != none {
-              [#smallcaps[#template.title]]
+              [#smallcaps[template.title]]
             }
           ],
           [
@@ -207,36 +235,41 @@
     footer: context(
       if here().page() >= 2 [
         #set text(size: 10pt)
-        #line(start: (0%, 0cm), length: 100%, stroke: 0.5pt)
+        // Custom footnote separator - thinner line closer to content
+        // #set footnote.entry(
+        //   separator: line(length: 100%, stroke: 0.3pt),
+        //   clearance: 0.5em
+        // )
+
+        #line(start: (-0.5em, 0cm), length: 100%, stroke: 0.5pt)
+        
+        #show-report-footnotes()
+        // Your custom footer
         #table(
-          columns: (40%, 20%, 40%),
+          columns: (80%, 20%),
           stroke: none,
           inset: 0em,
           align: (x, y) => (left+top, center+top, right+top).at(x),
           [
-            // Left: Authors
             #if template.authors != none and template.authors.len() > 0 {
               let author-names = template.authors.map(a => if "name" in a and a.name != none {a.name} else {""}).join(", ")
               [#author-names]
             }
           ],
+          // [
+          //   #if template.date != none {
+          //     [#template.date]
+          //   } else {
+          //     [#datetime.today().display("[year]")]
+          //   }
+          // ],
           [
-            // Center: Date
-            #if template.date != none {
-              [#template.date]
-            } else {
-              [#datetime.today().display("[year]")]
-            }
-          ],
-          [
-            // Right: Page number
             #counter(page).display("1 / 1", both: true)
           ]
         )
       ]
     )
   )
-
   // Apply numbering setting
   if template.numbering {
     set heading(numbering: "1.1")
