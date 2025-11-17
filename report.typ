@@ -1,75 +1,29 @@
 // Main report file
-#import "template.typ": create-report-template, make-report, report-footnote
-
-// Configure your report
-#let my-report = create-report-template(
-  // Required information
-  logo: "./img/unige.pdf",
-  logosize: 6cm,
-  university: "University Name",
-  title: "Report Title",
-  
-  // Structured authors
-  authors: (
-    (
-      name: "Theresa Tungsten",
-      affiliation: "Artos Institute",
-      email: "tung@artos.edu",
-    ),
-    (
-      name: "Eugene Deklan",
-      // affiliation: "Honduras State",
-      email: "e.deklan@hstate.hn",
-    ),
-  ),
-  
-  // Optional information
-  faculty: "Faculty of Science",
-  // subtitle: "Report Subtitle",
-  course-name: "Course Name",
-  course-id: "CS101",
-  illustrations: (
-    (
-      path: "./img/unige_informatic.png",
-      width: 4cm
-    ),),
-  project-name: "Project Name",
-  github: "project-repo",
-  github-link: "https://github.com/username/project-repo",
-  date: none,
-
-  // Document options
-  toc: true,
-  numbering: true,
-  bibliography: false,
-  appendix: false,
-)
+#import "template.typ": make-report, report-footnote
+#import "metadata.typ": my-report
+#import "@preview/theofig:0.1.0": definition
 
 // Main content
 #show: make-report.with(my-report)
 
 = Introduction
 
-This is the introduction of your report.
-#report-footnote[Ghnzajaja]
+#pagebreak()
 
-= Methodology
+= Methodology <methodology>
 
-Describe your methodology here.
+#pagebreak()
 
-== Data Collection
+= Implementation <impl>
 
-Details about data collection.
-
-== Analysis
-
-Details about analysis methods.
+#pagebreak()
 
 = Results
 
-Present your results here.
+#pagebreak()
+
+= Discussion
+
+#pagebreak()
 
 = Conclusion
-
-Conclude your report.
-// Bibliography and Appendix will be added automatically if enabled
