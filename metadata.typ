@@ -4,10 +4,10 @@
 // Configure your report
 #let my-report = create-report-template(
   // Required information
-  logo: "./img/unige.pdf",
+  logo: "./img/unige.svg",
   logosize: 6cm,
   university: "University of Geneva",
-  title: " LSB steganography",
+  title: "My Course",
 
   // Structured authors
   authors: (
